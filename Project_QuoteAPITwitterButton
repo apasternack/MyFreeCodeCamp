@@ -1,0 +1,160 @@
+<!doctype html>
+
+<head>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+    
+    <script>
+
+            window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+            
+            return t;
+            }(document, "script", "twitter-wjs"));
+
+    </script>
+    <style>
+
+        html { 
+            background: url(airBalloonBackground.jpg) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+
+        #main {
+            /*position: absolute;*/
+                /*opacity: 0.3;*/
+
+        }
+
+    </style>
+
+    
+
+</head>
+
+<body>
+
+
+    <div class="container-fluid" id="main">
+
+
+        <div class="row text-center">
+            <h2>Random Quote Generator</h2>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12 well message">
+                The message will go here
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <button id="getMessage" class="btn btn-primary">Get me a quote!</button>
+            </div>
+        </div>
+    </div>
+
+    <p></p>
+    <!--<script src="lib1.js"></script>
+        <script src="lib2.js"></script>
+        <script src="appWithIIFEModulizeGreet.js"></script>-->
+    <!--<script src="CaesarsCipher.js"></script>-->
+    <!--<script src="app.js"></script>-->
+
+
+<script>
+
+
+        
+  $(document).ready(function() {
+    
+    var quote = 'defaultValue';
+
+    function getJoke() {
+        $.ajax({
+            url: "http://api.icndb.com/jokes/random",
+            // data: data,
+            success: function(json) {
+                $(".message").html(json.value.joke);
+            },
+            dataType: "json"
+        });
+    }
+
+    function htmlToString(string) {
+        var element = document.createElement("div");
+        element.setAttribute('id','temp');
+        element.innerHTML = string;
+        var formattedString = element.innerText;
+        return formattedString;
+
+    }
+
+    function getQuote() {
+        var quote;
+        $.ajax({
+            url: "https://crossorigin.me/http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=",
+            dataType: "json",
+            success: function(json) {
+
+                $(".message").html(json[0].content + json[0].title);
+                quote = {quote:json[0].content, author:json[0].title};
+
+                //clean up quote string
+                // var n1 = quote.quote.search("<p>");
+                // var n2 = quote.quote.search("</p>");
+                // quote.quote = quote.quote.slice((n1 +3), n2);
+                quote.quote = htmlToString(quote.quote);
+                
+                // Clear out previous button if it exists
+                var elem = document.getElementsByTagName('iframe')[1];
+                if (elem != null) {
+                    elem.parentNode.removeChild(elem);
+                }
+
+                //create twitter button
+                var link = document.createElement('a');
+                link.setAttribute('href', 'https://twitter.com/share');
+                link.setAttribute('class', 'twitter-share-button');
+                link.setAttribute('style', 'margin-top:5px;');
+                link.setAttribute('id', 'twitterbutton');
+                link.setAttribute("data-text" , quote.quote + "  -" + quote.author);
+                // link.setAttribute("data-via" ,"denvycom") ;
+                link.setAttribute("data-size" ,"large") ;
+                document.body.appendChild(link) ;
+                setTimeout(function(){twttr.widgets.load();}, 0000);
+            }
+        });
+    }
+
+    $.ajaxSetup({ cache: false });
+    getQuote();
+    $("#getMessage").on("click", function() { getQuote()});
+
+  });
+
+
+</script>
+
+
+</body>
+
+</html>
