@@ -1,5 +1,3 @@
-//make a roman numeral object that convertDigit() returns
-//make array with roman numeral values
 
 
 function convertToRoman(num) {
@@ -11,27 +9,46 @@ function convertToRoman(num) {
     var romanNumeralObject;
     var baseTenDigit;
 
-    if (num > 1000) {
+    //write for loop with terminating condition being length
 
-        baseTenDigit = num.toString().slice(0, 1);
+
+    if (num > 0) {
+        baseTenDigit = num.toString().slice(-1);
+        romanNumeralSet = romanNumeralArray.slice(0, 3);
+
+        romanNumeral = printRomanNumeral(baseTenDigit, romanNumeralSet);
+        console.log(romanNumeral);
+    }
+
+    if (num >= 10) {
+        baseTenDigit = num.toString().slice(-2, -1);
+        romanNumeralSet = romanNumeralArray.slice(2, 5);
+
+        romanNumeral = printRomanNumeral(baseTenDigit, romanNumeralSet) + romanNumeral;
+        console.log(romanNumeral);
+
+    }
+
+    if (num >= 100) {
+        baseTenDigit = num.toString().slice(-3, -2);
+        romanNumeralSet = romanNumeralArray.slice(4, 7);
+
+        romanNumeral = printRomanNumeral(baseTenDigit, romanNumeralSet) + romanNumeral;
+                console.log(romanNumeral);
+
+    }
+
+    if (num >= 1000) {
+
+        baseTenDigit = num.toString().slice(-4, -3);
         romanNumeralSet = romanNumeralArray.slice(6, 9);
 
-        romanNumeralObject = convertDigit(baseTenDigit);
-        romanNumeral = printRomanNumeral(baseTenDigit, romanNumeralSet);
+        // romanNumeralObject = convertDigit(baseTenDigit);
+        romanNumeral = printRomanNumeral(baseTenDigit, romanNumeralSet) + romanNumeral;
+                console.log(romanNumeral);
 
-
-        //set array to appropriate 1's 5's 10's value and take RomanNumeral transform into real roman numeral'
 
     }
-
-    if (num > 100) {
-        //fill in
-    }
-
-    if (num > 10) {
-        //fill in
-    }
-
 
     return romanNumeral;
 
@@ -40,7 +57,7 @@ function convertToRoman(num) {
 
 
 
-console.log(convertToRoman(3352));
+console.log(convertToRoman(1000));
 
 
 
@@ -51,6 +68,8 @@ function printRomanNumeral(digit, romanNumeralSet) {
     var fives = romanNumeralSet[1];
     var tens = romanNumeralSet[2];
     var romanNumeral = '';
+    digit = parseInt(digit);
+
 
     //if 1-3 print 1-3 "1"s 
     if (digit < 4) {
@@ -82,33 +101,33 @@ function printRomanNumeral(digit, romanNumeralSet) {
     return romanNumeral; //STRING VALUE TO BUILD UP ROMAN NUMERAL 
 }
 
-function convertDigit(digit) {
+// function convertDigit(digit) {
 
-    digit = parseInt(digit);
-    var romanNumeralObject = {
-        ones: 0,
-        fives: 0,
-        tens: 0
-    }
+//     digit = parseInt(digit);
+//     var romanNumeralObject = {
+//         ones: 0,
+//         fives: 0,
+//         tens: 0
+//     }
 
-    if (digit < 4) {
-        romanNumeralObject.ones = digit;
-    }
-    if (digit === 4) {
-        romanNumeralObject.ones = 1;
-        romanNumeralObject.fives = 1;
-    }
-    if (digit === 5) {
-        romanNumeralObject.fives = 1;
-    }
-    if (digit > 5 && digit < 9) {
-        romanNumeralObject.fives = 1;
-        romanNumeralObject.ones = digit - 5;
-    }
-    if (digit === 9) {
-        romanNumeralObject.ones = 1;
-        romanNumeralObject.tens = 1;
-    }
+//     if (digit < 4) {
+//         romanNumeralObject.ones = digit;
+//     }
+//     if (digit === 4) {
+//         romanNumeralObject.ones = 1;
+//         romanNumeralObject.fives = 1;
+//     }
+//     if (digit === 5) {
+//         romanNumeralObject.fives = 1;
+//     }
+//     if (digit > 5 && digit < 9) {
+//         romanNumeralObject.fives = 1;
+//         romanNumeralObject.ones = digit - 5;
+//     }
+//     if (digit === 9) {
+//         romanNumeralObject.ones = 1;
+//         romanNumeralObject.tens = 1;
+//     }
 
-    return romanNumeralObject;
-}
+//     return romanNumeralObject;
+// }
