@@ -17,7 +17,6 @@ function convertToRoman(num) {
         romanNumeralSet = romanNumeralArray.slice(0, 3);
 
         romanNumeral = printRomanNumeral(baseTenDigit, romanNumeralSet);
-        console.log(romanNumeral);
     }
 
     if (num >= 10) {
@@ -25,7 +24,6 @@ function convertToRoman(num) {
         romanNumeralSet = romanNumeralArray.slice(2, 5);
 
         romanNumeral = printRomanNumeral(baseTenDigit, romanNumeralSet) + romanNumeral;
-        console.log(romanNumeral);
 
     }
 
@@ -34,7 +32,6 @@ function convertToRoman(num) {
         romanNumeralSet = romanNumeralArray.slice(4, 7);
 
         romanNumeral = printRomanNumeral(baseTenDigit, romanNumeralSet) + romanNumeral;
-                console.log(romanNumeral);
 
     }
 
@@ -43,10 +40,7 @@ function convertToRoman(num) {
         baseTenDigit = num.toString().slice(-4, -3);
         romanNumeralSet = romanNumeralArray.slice(6, 9);
 
-        // romanNumeralObject = convertDigit(baseTenDigit);
         romanNumeral = printRomanNumeral(baseTenDigit, romanNumeralSet) + romanNumeral;
-                console.log(romanNumeral);
-
 
     }
 
