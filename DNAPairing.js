@@ -22,9 +22,9 @@ function pairElement(nucleotideString) {
                     }
                 }
             );
-            console.log(basePairToAdd);
+            // console.log(basePairToAdd);
             basePairToAdd = basePairToAdd[0];
-            console.log(basePairToAdd);
+            // console.log(basePairToAdd);
             matchesBasePairs.push(basePairToAdd);
 
         }
