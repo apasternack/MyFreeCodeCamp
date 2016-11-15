@@ -24,7 +24,7 @@ function uniteUnique(arr) {
 
             });
 
-            if (addValue = true) uniqueValuesArray.push(inputValue);
+            if (addValue === true) uniqueValuesArray.push(inputValue);
 
         });
 
