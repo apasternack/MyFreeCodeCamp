@@ -13,9 +13,14 @@ function uniteUnique(arr) {
 
             var addValue = true;
 
-            uniqueValuesArray.forEach(function (outputValue) {
+            uniqueValuesArray.every(function (outputValue) {
 
-                if (outputValue === inputValue) addValue = false;
+                if (outputValue === inputValue) {
+                    
+                    addValue = false;
+                    return false;
+                    
+                } else return true;
 
             });
 
