@@ -10,14 +10,11 @@ function sumFibs(num) {
 
     var sumFibArr;
     var fibArray = fibArrayGenerator(num);
-    console.log(fibArray);
 
     fibArray = fibArray.filter(function (value) {
         if (value.isEven()) return false;
         else return true;
     });
-
-    console.log(fibArray);
 
     sumFibArr = fibArray.reduce(function(total, num) {return total + num;});
 
