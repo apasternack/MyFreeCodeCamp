@@ -20,9 +20,16 @@ function smallestCommons(arr) {
 
     while (!isMultipleOfAllValues) {
 
-        if (currentLowestMultiple % counter !== 0) currentLowestMultiple *= counter;
-        else if (counter === (bottomOfRange + 1)) isMultipleOfAllValues = true;
+        if (currentLowestMultiple % counter !== 0) {
+            currentLowestMultiple *= counter;
+        }
+        else if (counter === (bottomOfRange + 1)) {
+            isMultipleOfAllValues = true;
+        }
         counter--;
+        console.log("multipleLowest: "  +currentLowestMultiple);
+        console.log("counter: " + counter);
+
 
     }
 
@@ -30,7 +37,7 @@ function smallestCommons(arr) {
 }
 
 
-console.log(smallestCommons([1, 5]));
+console.log(smallestCommons([1, 10]));
 
     /*
 
