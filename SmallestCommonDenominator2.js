@@ -30,26 +30,28 @@ function smallestCommons(arr) {
 
         var primeFactorObject = {};
 
-
         primeFactorsArray = primeGenerator(topOfRange/2);
-        console.log('array length: ' +primeFactorsArray.length);
+        // console.log('array length: ' + primeFactorsArray.length);
 
         for ( var i = primeFactorsArray.length-1; i >= 0; i--) {
 
             if (primeFactorsArray[i] < numberToFactor) {
                 //divide number
-                //store result.floor
-                //set numberToFactor to remainder
-            }
-            if (numberToFactor % primeFactorsArray[i] === 0) {
-                primeFactorObject[primeFactorsArray[i]] = numberToFactor/primeFactorsArray[i];
+                //store result.floor in factorObject
+                primeFactorObject[primeFactorsArray[i]] = Math.floor(numberToFactor / primeFactorsArray[i]);
+
+               //set numberToFactor to remainder
+               numberToFactor = numberToFactor % primeFactorsArray[i];
+
             }
 
         }
 
+        return primeFactorObject;
+
     }
 
-    factor(25);
+    console.log(factor(16));
 
 
 //     var myObj = {
@@ -93,5 +95,3 @@ function primeGenerator(num) {
     return primeArray;
 
 }
-
-console.log(25 % 10)
