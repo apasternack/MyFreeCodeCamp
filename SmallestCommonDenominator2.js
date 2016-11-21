@@ -37,6 +37,8 @@ function smallestCommons(arr) {
 
     // given a number, factor it with prime array and create primeFactorObject, put in an array
 
+    factor()
+
     function factor(numberToFactor) {
 
         for (var i = primeFactorsArray.length - 1; i >= 0; i--) {
@@ -64,9 +66,9 @@ function smallestCommons(arr) {
 
         }
 
-        return primeFactorObject;
-
     }
+
+
 
 }
 
