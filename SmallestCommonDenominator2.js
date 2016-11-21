@@ -22,26 +22,43 @@ function smallestCommons(arr) {
 
     }
     console.log('range of numbers array: ' + rangeOfNumbersArray);
-    
+
+
+
+    primeFactorsArray = primeGenerator(topOfRange / 2);
+    // console.log('array length: ' + primeFactorsArray.length);
+
+    var primeFactorObject = {};
+    primeFactorsArray.forEach(function (primeFactor) {
+        primeFactorObject[primeFactor] = 0;
+    });
+
+    console.log(primeFactorObject);
 
     // given a number, factor it with prime array and create primeFactorObject, put in an array
 
     function factor(numberToFactor) {
 
-        var primeFactorObject = {};
-
-        primeFactorsArray = primeGenerator(topOfRange/2);
-        // console.log('array length: ' + primeFactorsArray.length);
-
-        for ( var i = primeFactorsArray.length-1; i >= 0; i--) {
+        for (var i = primeFactorsArray.length - 1; i >= 0; i--) {
 
             if (primeFactorsArray[i] < numberToFactor) {
-                //divide number
-                //store result.floor in factorObject
-                primeFactorObject[primeFactorsArray[i]] = Math.floor(numberToFactor / primeFactorsArray[i]);
 
-               //set numberToFactor to remainder
-               numberToFactor = numberToFactor % primeFactorsArray[i];
+                if (numberToFactor % primeFactorsArray[i] === 0) {
+
+                    primeFactorObject[primeFactorsArray[i]]++;
+
+                    if (primeFactorsArray.includes(numberToFactor / primeFactorsArray[i])) {
+
+                        primeFactorObject[numberToFactor / primeFactorsArray[i]]++;
+
+                    } else {
+
+                        var newPrimeFactorObject = factor(numberToFactor / primeFactorsArray[i]);
+
+                    }
+                    //add both primeFactorsArray[i] to OBJ and result, both with value
+                }
+
 
             }
 
@@ -50,18 +67,6 @@ function smallestCommons(arr) {
         return primeFactorObject;
 
     }
-
-    console.log(factor(16));
-
-
-//     var myObj = {
-//         3:4,
-//         5:1,
-//         7:3
-//     };
-
-// console.log(myObj[3]);
-
 
 }
 
@@ -88,7 +93,7 @@ function primeGenerator(num) {
             }
         }
 
-        if(isPrime) primeArray.push(currentPrimeValue);
+        if (isPrime) primeArray.push(currentPrimeValue);
 
     }
 
