@@ -1,18 +1,18 @@
-
 function addTogether() {
   
-    if (arguments.length === 2) return arguments[0] + arguments[1];
-    if (arguments.length === 1) {
+    if (arguments.length === 2 && typeof arguments[0] === 'number' && typeof arguments[1] === 'number') return arguments[0] + arguments[1];
+    if (arguments.length === 1 && typeof arguments[0] === 'number') {
         var closureValue = arguments[0];
         return (function(numberToAdd) {
-            return numberToAdd + closureValue;
+            if (typeof numberToAdd === 'number') return numberToAdd + closureValue;
+            else return undefined;
         });
 
     }
 
   console.log(arguments.length);
   
-  return false;
+  return undefined;
 }
 
 console.log(addTogether(2));
