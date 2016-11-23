@@ -1,19 +1,7 @@
 
 function sym(arg) {
 
-    // console.log(arguments);
-    // console.log(arguments[0]);
-    // console.log(arguments[1]);
-
     var args = Array.from(arguments);
-
-    // console.log(args);
-    // console.log(Array.isArray(args));
-
-    // console.log(args[0]);
-    // console.log(Array.isArray(args[0]));
-    // console.log(args[1]);
-    // console.log(Array.isArray(args[1]));
 
    var SymmetricDifference = args.reduce(function (arrayA, arrayB) {
 
@@ -41,9 +29,12 @@ function sym(arg) {
 
     });
 
-    return SymmetricDifference;
+    var SymmetricDifferenceCleanedOfDupplicateValues = [];
+    SymmetricDifference.forEach((element) => {
+        if (!SymmetricDifferenceCleanedOfDupplicateValues.includes(element)) SymmetricDifferenceCleanedOfDupplicateValues.push(element);
+    });
+
+    return SymmetricDifferenceCleanedOfDupplicateValues;
 }
 
-console.log(sym([5, 2, 1, 4], [1, 2, 3]));
-
-
+console.log(sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5]));
