@@ -1,18 +1,25 @@
 
 function checkCashRegister(price, cash, cashInDrawerArray) {
 
-    var changeDue = cash - price;
+    var cashInCents = cash * 100;
+    var priceInCents = price * 100;
+
+    var changeDueInCents = cashInCents - priceInCents;
     // cashInDrawerArray = []; //CHNAGE THIS
-    var cashInDrawerTotal = 0;
+    var cashInDrawerTotalInCents = 0;
+    var coinOrBillTypeValueInCents;
     
     cashInDrawerArray.forEach(function (coinOrBillType) {
         
-        cashInDrawerTotal += coinOrBillType[1];
+        coinOrBillTypeValueInCents = coinOrBillType[1] * 100;
+        cashInDrawerTotalInCents += coinOrBillTypeValueInCents;
 
     });
 
-    console.log(cashInDrawerTotal);
-    // if (changeDue > )
+    console.log(cashInDrawerTotalInCents);
+    if (changeDueInCents > cashInDrawerTotalInCents ) return "Insufficient Funds";
+    
+    if (changeDueInCents === cashInDrawerTotalInCents) return "Closed";
 
     
 
@@ -25,12 +32,12 @@ function checkCashRegister(price, cash, cashInDrawerArray) {
     //     // if change = cid then return "Closed"
 
     //     //while changeDue !== 0 
-    //     while changeDue >= 100
-    //         add 100.00 to "ONE HUNDRED"
-    // minus 100.00 from changeDue
-    // while changeDue >= 20
-    //         add 20.00 to "TEWENTY"
-    // minus 20.00 from changeDue
+    //     while changeDue >= 100 AND coinOrBillType[1] !== 0
+    //          add 100.00 to "ONE HUNDRED"
+    //          minus 100.00 from changeDue
+    //     while changeDue >= 20 AND coinOrBillType[1] !== 0
+    //          add 20.00 to "TEWENTY"
+    //          minus 20.00 from changeDue
     // REPEAT FOR ALL OTHER DENOMINATIONS
 
     // // return changeArray;
