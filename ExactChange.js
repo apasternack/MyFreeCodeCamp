@@ -1,27 +1,43 @@
 
-function checkCashRegister(price, cash, cid) {
-  var change;
+function checkCashRegister(price, cash, cashInDrawerArray) {
 
-// cash - price = changeDue
+    var changeDue = cash - price;
+    // cashInDrawerArray = []; //CHNAGE THIS
+    var cashInDrawerTotal = 0;
+    
+    cashInDrawerArray.forEach(function (coinOrBillType) {
+        
+        cashInDrawerTotal += coinOrBillType[1];
 
-// if changeDue > cid total then return "Insufficient Funds"
+    });
 
-// if change = cid then return "Closed"
+    console.log(cashInDrawerTotal);
+    // if (changeDue > )
 
-//while changeDue !== 0 
-        while changeDue >= 100
-            add 100.00 to "ONE HUNDRED"
-            minus 100.00 from changeDue
-        while changeDue >= 20
-            add 20.00 to "TEWENTY"
-            minus 20.00 from changeDue
-        REPEAT FOR ALL OTHER DENOMINATIONS
-
-// return changeArray;
+    
 
 
-  // Here is your change, ma'am.
-  return change;
+
+    //     // cash - price = changeDue
+
+    //     // if changeDue > cid total then return "Insufficient Funds"
+
+    //     // if change = cid then return "Closed"
+
+    //     //while changeDue !== 0 
+    //     while changeDue >= 100
+    //         add 100.00 to "ONE HUNDRED"
+    // minus 100.00 from changeDue
+    // while changeDue >= 20
+    //         add 20.00 to "TEWENTY"
+    // minus 20.00 from changeDue
+    // REPEAT FOR ALL OTHER DENOMINATIONS
+
+    // // return changeArray;
+
+
+    // Here is your change, ma'am.
+    return cash;
 }
 
 // Example cash-in-drawer array:
