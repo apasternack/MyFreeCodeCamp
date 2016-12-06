@@ -4,6 +4,10 @@ function checkCashRegister(price, cash, cid) {
 
 // cash - price = changeDue
 
+// if changeDue > cid total then return "Insufficient Funds"
+
+// if change = cid then return "Closed"
+
 //while changeDue !== 0 
         while changeDue >= 100
             add 100.00 to "ONE HUNDRED"
@@ -12,6 +16,8 @@ function checkCashRegister(price, cash, cid) {
             add 20.00 to "TEWENTY"
             minus 20.00 from changeDue
         REPEAT FOR ALL OTHER DENOMINATIONS
+
+// return changeArray;
 
 
   // Here is your change, ma'am.
