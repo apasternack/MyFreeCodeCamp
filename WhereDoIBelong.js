@@ -12,6 +12,7 @@ function getIndexToIns(arr, num) {
         if ( num <= listOfValues[i] ) {
             return i;
         }
+        
     }
 
     // in case "num" is larger than all values in listOfValues
